@@ -62,5 +62,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow FamilyPhoto to utilize the camera for best experience.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please Allow FamilyPhoto to utilize the photo library for best experience.</string>
 </dict>
 </plist>

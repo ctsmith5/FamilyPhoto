@@ -10,18 +10,37 @@ import UIKit
 
 class PostListTableViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var isSearching: Bool = false
+    var resultsArray: [Post] = []
     var posts: [Post] = []
+    
+    var dataSource: [Post] {
+        if isSearching{
+            return resultsArray
+        }else{
+            return PostController.shared.posts
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.posts = PostController.shared.posts
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        resultsArray = PostController.shared.posts
+    
+    }
+    
     // MARK: - Table view data source
 
   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return PostController.shared.posts.count
+        return dataSource.count
     }
 
     
@@ -30,9 +49,6 @@ class PostListTableViewController: UITableViewController {
         cell.postImage.image = self.posts[indexPath.row].photo
         cell.postCaption.text = self.posts[indexPath.row].caption
         cell.commentLabel.text = "Comments: \(self.posts[indexPath.row].comments.count)"
-
-      
-
         return cell
     }
     
@@ -81,4 +97,27 @@ class PostListTableViewController: UITableViewController {
     }
     
 
+}// End of class
+
+//MARK: - Extension
+
+extension PostListTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        resultsArray = dataSource.filter({ (post) -> Bool in
+            self.isSearching = true
+            return post.matches(searchTerm: searchText)
+        })
+        tableView.reloadData()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.isSearching = true
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.isSearching = false
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        tableView.reloadData()
+        self.isSearching = false
+    }
 }

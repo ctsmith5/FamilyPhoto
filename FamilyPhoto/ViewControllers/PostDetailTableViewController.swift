@@ -12,8 +12,8 @@ class PostDetailTableViewController: UITableViewController {
 
     
     @IBOutlet weak var postPhoto: UIImageView!
-    
     @IBOutlet weak var captionLabel: UILabel!
+    
     //Reciever
     var post: Post?{
         didSet{
@@ -30,8 +30,8 @@ class PostDetailTableViewController: UITableViewController {
         self.postPhoto.image = post?.photo
         self.captionLabel.text = post?.caption
         self.tableView.reloadData()
-        
     }
+    
     //MARK: - Button Actions
     
     @IBAction func commentButtonPressed(_ sender: UIButton) {
@@ -53,7 +53,6 @@ class PostDetailTableViewController: UITableViewController {
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
         commentAlert.addAction(postAction)
         commentAlert.addAction(cancelAction)
         self.tableView.reloadData()

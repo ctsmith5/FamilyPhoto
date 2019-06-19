@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF9228D722B971D700DEFD93 /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9228D622B971D600DEFD93 /* SearchableRecord.swift */; };
+		AF9228DB22BAAF6D00DEFD93 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9228DA22BAAF6D00DEFD93 /* CloudKit.framework */; };
 		AFC5F4C622B6DC2D0024235C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F4C522B6DC2D0024235C /* AppDelegate.swift */; };
 		AFC5F4C822B6DC2D0024235C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC5F4C722B6DC2D0024235C /* SceneDelegate.swift */; };
 		AFC5F4CD22B6DC2D0024235C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC5F4CB22B6DC2D0024235C /* Main.storyboard */; };
@@ -32,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF9228D622B971D600DEFD93 /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
+		AF9228D822BAAF3700DEFD93 /* FamilyPhoto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FamilyPhoto.entitlements; sourceTree = "<group>"; };
+		AF9228DA22BAAF6D00DEFD93 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AFC5F4C222B6DC2D0024235C /* FamilyPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamilyPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC5F4C522B6DC2D0024235C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC5F4C722B6DC2D0024235C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9228DB22BAAF6D00DEFD93 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +74,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF9228D922BAAF6D00DEFD93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF9228DA22BAAF6D00DEFD93 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AFC5F4B922B6DC2C0024235C = {
 			isa = PBXGroup;
 			children = (
 				AFC5F4C422B6DC2D0024235C /* FamilyPhoto */,
 				AFC5F4DB22B6DC2F0024235C /* FamilyPhotoTests */,
 				AFC5F4C322B6DC2D0024235C /* Products */,
+				AF9228D922BAAF6D00DEFD93 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +104,7 @@
 		AFC5F4C422B6DC2D0024235C /* FamilyPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				AF9228D822BAAF3700DEFD93 /* FamilyPhoto.entitlements */,
 				AFC5F4F422B82E7E0024235C /* Views */,
 				AFC5F4F122B82C620024235C /* ModelControllers */,
 				AFC5F4EE22B82B780024235C /* Models */,
@@ -126,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				AFC5F4EF22B82B910024235C /* Post.swift */,
+				AF9228D622B971D600DEFD93 /* SearchableRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +266,7 @@
 			files = (
 				AFC5F4E822B82A8E0024235C /* PostListTableViewController.swift in Sources */,
 				AFC5F4EC22B82B080024235C /* AddPostTableViewController.swift in Sources */,
+				AF9228D722B971D700DEFD93 /* SearchableRecord.swift in Sources */,
 				AFC5F4C622B6DC2D0024235C /* AppDelegate.swift in Sources */,
 				AFC5F4F622B82E970024235C /* PostTableViewCell.swift in Sources */,
 				AFC5F4F022B82B910024235C /* Post.swift in Sources */,
@@ -414,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FamilyPhoto/FamilyPhoto.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2779EQ3QB6;
 				INFOPLIST_FILE = FamilyPhoto/Info.plist;
@@ -433,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FamilyPhoto/FamilyPhoto.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2779EQ3QB6;
 				INFOPLIST_FILE = FamilyPhoto/Info.plist;

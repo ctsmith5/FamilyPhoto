@@ -17,14 +17,16 @@ class AddPostTableViewController: UITableViewController, UITextFieldDelegate, UI
         super.viewDidLoad()
         
     }
-
+    //MARK: - Button Actions
+    
     @IBAction func addNewPostButtonPressed(_ sender: UIBarButtonItem) {
         if let image = addPostImageView.image,
             let caption = captionTextField.text{
             PostController.shared.createPostWith(caption: caption, image: image) { (post) in
-                guard let post = post else {return}
-                PostController.shared.posts.append(post)
+                
+                
             }
+            self.tabBarController?.selectedIndex = 0
         }
     }
     
@@ -39,6 +41,13 @@ class AddPostTableViewController: UITableViewController, UITextFieldDelegate, UI
         imagePickerController.delegate = self
         let actionSheet = UIAlertController(title: "Upload Image", message: "Select a photo", preferredStyle: .actionSheet)
         
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
+                imagePickerController.sourceType = UIImagePickerController.SourceType.camera
+                self.present(imagePickerController, animated:  true, completion: nil)
+            }))
+        }
+
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             actionSheet.addAction(UIAlertAction(title: "Photos", style: .default, handler: { (_) in
                 imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
@@ -46,17 +55,23 @@ class AddPostTableViewController: UITableViewController, UITextFieldDelegate, UI
             }))
         }
         
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true, completion: nil)
         
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        if let photo = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.addPostImageView.image = photo
+        }
     }
     
     
     
   
     // MARK: - Table view data source
-
-   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
